@@ -1,17 +1,52 @@
 import React from "react";
+import axios from "axios";
 
-function CartDrawer({ removeIcon, iconCarbon, items,handleRemove,open,grandTotal,totalItem,subtotal }) {
-  
+function CartDrawer({
+  removeIcon,
+  iconCarbon,
+  items,
+  handleRemove,
+  open,
+  grandTotal,
+  totalItem,
+  subtotal,
+}) {
+  const handleConfirm = async () => {
+    try {
+      //prepare payload
+      const orderItems = items.map((item) => ({
+        name: item.name,
+        quantity: item.quantity,
+        price: item.price,
+        subtotal: subtotal(item.index),
+      }));
 
-  
+      const total = parseFloat(grandTotal); //grand total
+      // Get customer info from localStorage
+      const savedCustomer = JSON.parse(
+        localStorage.getItem("customerInfo") || "{}"
+      );
+
+      await axios.post("http://localhost:5000/orders", {
+        items: orderItems,
+        total,
+        customer_name: savedCustomer.name || "Anonymous",
+        customer_number: savedCustomer.number || "N/A",
+      });
+      open();
+    } catch (err) {
+      console.error("Failed to submit order:", err);
+    }
+  };
+
   return (
     <div>
       <article className="drawer">
         <div className="header">Your Cart ({totalItem})</div>
         {items.map((item) => {
           return (
-            <div>
-              <ul className="cart_items" key={item.index}>
+            <div key={item.index}>
+              <ul className="cart_items">
                 <li className="cart_item">
                   <div className="item_name">{item.name}</div>
                   <div className="item_details">
@@ -20,7 +55,10 @@ function CartDrawer({ removeIcon, iconCarbon, items,handleRemove,open,grandTotal
                     <span className="item_sum">
                       ${subtotal(item.index).toFixed(2)}
                     </span>
-                    <button onClick={()=>handleRemove(item.index)} className="remove_from_cart">
+                    <button
+                      onClick={() => handleRemove(item.index)}
+                      className="remove_from_cart"
+                    >
                       <img src={removeIcon} alt="" />
                     </button>
                   </div>
@@ -67,7 +105,9 @@ function CartDrawer({ removeIcon, iconCarbon, items,handleRemove,open,grandTotal
         </div>
 
         <div className="confirm_button">
-          <button type="button" onClick={open}>Confirm Order</button>
+          <button type="button" onClick={handleConfirm}>
+            Confirm Order
+          </button>
         </div>
       </article>
     </div>

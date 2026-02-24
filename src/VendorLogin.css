@@ -1,0 +1,37 @@
+.vendorLogin {
+  background-color: var(--rose-50);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vendorLogin form {
+  background-color: var(--rose-100);
+  padding: 2rem 3rem;
+  border-radius: 12px;
+  border: 1px solid var(--rose-300);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.vendorLogin h2 {
+  color: var(--rose-900);
+  margin-bottom: 1.5rem;
+}
+
+.vendorLogin input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid var(--rose-400);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.vendorLogin button {
+  width: 100%;
+  background-color: var(--red);
+  color: white;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 8px;
+}

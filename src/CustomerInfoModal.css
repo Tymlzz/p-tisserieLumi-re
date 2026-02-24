@@ -1,0 +1,76 @@
+.customerModalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.customerModal {
+  background-color: var(--rose-100);
+  border: 1px solid var(--rose-300);
+  border-radius: 12px;
+  width: 350px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.customerModal h2 {
+  color: var(--rose-900);
+  margin-bottom: 0.5rem;
+}
+
+.customerModal p {
+  color: hsl(14, 86%, 42%);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+}
+
+.inputGroup {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.inputGroup label {
+  display: block;
+  color: var(--rose-900);
+  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid var(--rose-400);
+  border-radius: 8px;
+  background-color: var(--rose-50);
+  font-size: 1rem;
+}
+
+.inputGroup input:focus {
+  border-color: var(--red);
+  outline: none;
+}
+
+.customerModal button {
+  width: 100%;
+  background-color: var(--red);
+  color: white;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.customerModal button:hover {
+  background-color: hsl(14, 86%, 35%);
+}
