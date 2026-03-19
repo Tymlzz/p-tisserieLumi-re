@@ -27,7 +27,7 @@ function CartDrawer({
         localStorage.getItem("customerInfo") || "{}"
       );
 
-      await axios.post("http://localhost:5000/orders", {
+      await axios.post("https://p-tisserielumiere-backend.onrender.com/orders", {
         items: orderItems,
         total,
         customer_name: savedCustomer.name || "Anonymous",

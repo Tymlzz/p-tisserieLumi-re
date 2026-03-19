@@ -5,7 +5,7 @@ function VendorDashboard() {
 
   // ✅ Fetch all orders
   useEffect(() => {
-    fetch("http://localhost:5000/orders")
+    fetch("https://p-tisserielumiere-backend.onrender.com/orders")
       .then((res) => res.json())
       .then((data) => setOrders(data))
       .catch((err) => console.error("Error fetching orders:", err));
@@ -14,7 +14,7 @@ function VendorDashboard() {
   // ✅ Optional: mark as completed
   const handleMarkCompleted = async (id) => {
     try {
-      const res = await fetch(`http://localhost:5000/orders/${id}/status`, {
+      const res = await fetch(`https://p-tisserielumiere-backend.onrender.com/orders/${id}/status`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: "Completed" }),
