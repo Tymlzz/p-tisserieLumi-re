@@ -11,7 +11,7 @@ function ProductCard({
   decreaseQuantity,
   isActive,
 }) {
-  // 
+  //
 
   return (
     <div>
@@ -21,11 +21,22 @@ function ProductCard({
             <source media="(min-width: 1024px)" srcSet={data.image.desktop} />
             <source media="(min-width: 600px)" srcSet={data.image.tablet} />
             <source media="(min-width: 400px)" srcSet={data.image.mobile} />
-            <img style={{ border: isInCart && isActive? '2px solid hsl(14, 86%, 42%)' : 'none' }}  src={data.image.thumbnail} alt={data.name} />
+            <img
+              style={{
+                border:
+                  isInCart && isActive ? "2px solid hsl(14, 86%, 42%)" : "none",
+              }}
+              src={data.image.mobile}
+              alt={data.name}
+            />
           </picture>
           {isInCart ? (
             <div className="quantity-controls">
-              <button className="decrement" aria-label="Decrease quantity" onClick = {decreaseQuantity}>
+              <button
+                className="decrement"
+                aria-label="Decrease quantity"
+                onClick={decreaseQuantity}
+              >
                 <img src={decrementIcon} alt="Decrease" />
               </button>
               <span>{data.quantity}</span>
